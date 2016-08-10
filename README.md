@@ -10,7 +10,7 @@ First, make a clone of this repository onto your local file system.
 $ git clone https://github.com/benwilcock/python-cloudfoundry-demo.git
 ````
 
-Second, if you don't have Pivotal Cloud Foundry yet but you'd like to follow along with this tutorial, follow the simple instructions below to get yourself set-up:-
+Second, if you don't have Pivotal Web Services account and no other access to Pivotal Cloud Foundry but you'd still like to follow along with this tutorial, follow the simple instructions below to get yourself set-up:-
 
 * Follow the Getting Started guide here: [Getting Started](https://docs.run.pivotal.io/starting/index.html) to register for a free Pivotal Web Services account and [install the CF CLI command line tools](https://docs.run.pivotal.io/cf-cli/install-go-cli.html)
 
