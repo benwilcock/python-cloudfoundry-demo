@@ -7,7 +7,7 @@ The simple Python Microservice can be used to test deployment of Python applicat
 First, make a clone of this repository onto your local file system.
 
 ````bash
-$ git clone https://
+$ git clone https://github.com/benwilcock/python-cloudfoundry-demo.git
 ````
 
 Second, if you don't have Pivotal Cloud Foundry yet but you'd like to follow along with this tutorial, follow the simple instructions below to get yourself set-up:-
