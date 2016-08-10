@@ -15,15 +15,15 @@ Second, if you don't have Pivotal Web Services account and no other access to Pi
 * Follow the Getting Started guide here: [Getting Started](https://docs.run.pivotal.io/starting/index.html) to register for a free Pivotal Web Services account
 * Install the [CF CLI command line tools](https://docs.run.pivotal.io/cf-cli/install-go-cli.html) on your computer
 
-You can then login to Pivotal Web Services with the command line tool as follows
+You can then login to Pivotal Web Services with the command line tool as follows:-
 
 ````bash
 $ cf login -a https://api.run.pivotal.io
 ````
 
-> To login you'll need the email and password you used to sign up and the first time you do it it may ask for your API key which can be found in your account profile.
+> To login you'll need the email and password details you used to sign up for your accoiunt and the first time you login you may be asked for your API key which can be found in your account profile online.
 
-Once you've logged in, if you execute `cf target` at the cmd line, you should see something like:
+Once you've logged in, if you execute `cf target` at the cmd line, you should see something like this:-
 
 ````bash
 API endpoint:   https://api.run.pivotal.io (API version: 2.58.0)
@@ -32,7 +32,7 @@ Org:            myorg
 Space:          development
 ````
 
-If you see this, your CF CLI has successfully connected to Pivotal Web Services (api.run.pivotal.io) and you're ready to push applications to it.
+If you do, your CF CLI has successfully connected to Pivotal Web Services (api.run.pivotal.io) and you're ready to push applications to Pivotal Web Services.
 
 ## Running the 'Hello World' application
 
