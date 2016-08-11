@@ -15,10 +15,7 @@ def hello_world():
     message += '<li>Version: <b>[1.0]</b></li>'
     message += '<li>Instance: <b>['+inst+']</b></li>'
     message += '<li>Memory: <b>[' +mem+ ']</b></li>'
-    message += '</ul><H3>Application Environment Variables</H3><small>'
-    message += pprint.pformat(str(os.environ))
-    message += '</small><p><blockquote><b>FYI:</b> The environment variables added by PCF services are listed under '
-    message += 'VCAP_XXXX but some are promoted (such as \'MEMORY_LIMIT\' etc.)</blockquote></body></html>'
+    message += '</ul></body></html>'
     app.logger.info('Publishing: ' + message)
     return message
 
