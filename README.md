@@ -111,7 +111,7 @@ postgresql   elephantsql   turtle                              create succeeded
 
 The `cf services` command just lists the current services in your Cloud Foundry space so you can visually check that `postgresql` was added to it as requested. Here you can see the __postgresql__ service has been added but no apps have bound to it yet (as expected, it's new!).
 
-Within the pycarsapi-v1 application the [manifest.yml](manifest.yml) file controls how the app will be deployed to Cloud Foundry, so make sure you keep the `postgresql` database service name as the application is configured to expect that service name when deploying.
+This time I've made deploying the app simpler by specifying a deployment manifest for Cloud Foundry. The `cf push` looks for this file and uses it during deployment. If you take a look inside the [manifest.yml](manifest.yml) within the pycarsapi-v1 application you'll see how this file guides the `push` by specifying how the app should be be deployed. In this case it specifies the application a name, assigns it a random route to avoid duplication and specifies which services it needs. For it to work properly, make sure you keep `postgresql` as the database service name as the application is expecting a service with this name to be available in the space when deploying.
 
 Finally, to run the pycarsapi-v1 microservice, simply 'push' it to the Cloud Foundry...
 
