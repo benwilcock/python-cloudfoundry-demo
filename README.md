@@ -38,11 +38,11 @@ This output is telling you that your CF CLI has successfully connected to the Pi
 
 The folder `hello-world` contains a basic Python web application that you can push to Cloud Foundry.
 
-#### This App Runs on...
+#### This App Can Run on...
 
-* Local PC
-* PCF DEV
 * Pivotal Web Services
+* Local PC's (with Python installed)
+* PCF DEV (if you've installed it)
 * Pivotal Cloud Foundry
 
 #### This App Requires...
