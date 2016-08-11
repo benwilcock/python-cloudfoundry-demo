@@ -40,7 +40,7 @@ The folder `hello-world` contains a basic Python web application that you can pu
 
 #### This App Can Run on...
 
-* Pivotal Web Services
+* [Pivotal Web Services (PWS)](https://run.pivotal.io/)
 * Local PC's (with Python installed)
 * PCF DEV (if you've installed it)
 * Pivotal Cloud Foundry
