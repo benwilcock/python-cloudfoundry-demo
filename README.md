@@ -82,10 +82,10 @@ To see your app, paste the url given on the line `urls:` into a browser window. 
 
 The folder `pycarsapi-v1` contains a Python microservice application which is backed by a database and which you can also push to Cloud Foundry.
 
-#### This App Runs On...
+#### This App Can Run On...
 
 * [Pivotal Web Services (PWS)](https://run.pivotal.io/)
-* Pivotal Cloud Foundry (*if you have a PostgreSQL service available in the marketplace*)
+* Pivotal Cloud Foundry (*if you have a PostgreSQL service available in your installation's marketplace*)
 
 #### This App Depends On....
 
