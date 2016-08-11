@@ -1,6 +1,6 @@
-# Python Cloud Foundry Demo's
+# Deploying Python Apps to Pivotal Web Services
 
-The simple Python Microservice can be used to test deployment of Python applications to Pivotal Cloud Foundry (PCF) installations and [Pivotal Web Services (a.k.a PWS)](https://run.pivotal.io/). 
+In this tutorial you'll learn how to deploy Python applications to [Pivotal Web Services (a.k.a PWS)](https://run.pivotal.io/). It should take no more than about 15 - 30 minutes to complete this tutorial, by the end of which you'll have deployed two applications (a web-app and a microservice) to the cloud. You don't have to write any code, all the code has been provided.
 
 ## Getting Started
 
