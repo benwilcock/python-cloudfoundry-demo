@@ -52,11 +52,13 @@ The folder `hello-world` contains a basic Python web application that you can pu
 
 #### To Run The App on PWS...
 
-Assuming you've already connected your CF CLI to Pivotal Web Services, simply execute the following commands while in your git cloned directory.
+Assuming you've already connected your CF CLI to Pivotal Web Services, simply execute the following commands while in your git cloned directory. 
+
+> In the `push` command below, to prevent your app-name clashing with someone else's you should replace `<initials>` with your initials and `<4didgitnum>` with a random 4 digit number of your choice.
 
 ````bash
 $ cd hello-world
-$ cf push
+$ cf push pyhello-world-<initials>-<4digitnum>
 ````
 
 After a short while and some output, you should see something like this...
@@ -126,4 +128,4 @@ If you `curl -X GET http://<your url here>/cars` you should see a response conta
 [[1, "Audi"], [2, "Mercedes"], [3, "Skoda"], [4, "Volvo"], [5, "Bentley"], [6, "Citroen"], [7, "BMW"], [8, "Volkswagen"]]
 ````
 
-This data came from the postgres database on Pivotal Web services. Don't believe me? If you login to the Pivotal Apps Manager online at [http://run.pivotal.io](http://run.pivotal.io) then go to the `pycarsapi-v1` app in your space, then under 'services' you'll find ElephantSQL and from there you can choose to 'manage' your databases and then 'browse' them. From here within ElephantSQL you can issue SQL statements directly against your databases. Try `SELECT * FROM demo.cars`. The data you see returned should be the same as that listed above.
+This data came from the postgres database on Pivotal Web services. Don't believe me? If you login to the Pivotal Apps Manager online at [http://run.pivotal.io](http://run.pivotal.io) then go to the `pycarsapi-v1` app in your space. Clisk on 'Services' > 'ElephantSQL' > 'Manage' > 'Browse'. From here within ElephantSQL you can issue SQL statements directly against your databases. Type `SELECT * FROM demo.cars` and click 'Execute'. The table you see returned should contain the same data as that listed above.
