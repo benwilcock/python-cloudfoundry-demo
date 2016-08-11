@@ -89,7 +89,7 @@ The folder `pycarsapi-v1` contains a Python microservice application which is ba
 
 #### This App Depends On....
 
-* Cloud Foundry PostgreSQL Service (*instructions to attach this service when using Pivotal Web Services are below*)
+* Cloud Foundry PostgreSQL Service attached to the space where you push it (*instructions on to create and attach this service when using Pivotal Web Services are below*)
 
 #### To Run The App on PWS...
 
