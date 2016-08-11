@@ -1,21 +1,21 @@
 # Deploying Python Apps to Pivotal Web Services
 
-In this tutorial you'll learn how to deploy Python applications to [Pivotal Web Services (a.k.a PWS)](https://run.pivotal.io/). It should take no more than about 15 - 30 minutes to complete this tutorial, by the end of which you'll have deployed two applications (a web-app and a microservice) to the cloud. You don't have to write any code, all the code has been provided.
+In this tutorial you'll learn how to deploy Python applications to [Pivotal Web Services (a.k.a PWS)](https://run.pivotal.io/). It should take no more than about 15 - 30 minutes to complete this tutorial, by the end of which you'll have deployed two applications to the cloud (a web-app and a microservice). You don't have to write any code, all the code has been provided.
 
 ## Getting Started
 
-First, download a ZIP of this repository and unpack to your local workspace. Open a terminal or command line and go to the directory you created.
+First, download a ZIP of this repository and unpack it into to your preferred local workspace location. Open a terminal or command line and go to the directory you just created.
 
 ````bash
-$ cd python-cloudfoundry-demo
+$ cd <path-to>/python-cloudfoundry-demo
 ````
 
-Second, if you don't have Pivotal Web Services account and no other access to Pivotal Cloud Foundry but you'd still like to follow along with this tutorial, follow the simple instructions below to get yourself set-up:-
+Next, if you don't have Pivotal Web Services account and no other access to Pivotal Cloud Foundry but you'd still like to follow along with this tutorial, follow the simple instructions below to get yourself set-up:-
 
 * Follow the Getting Started guide here: [Getting Started](https://docs.run.pivotal.io/starting/index.html) to register for a free Pivotal Web Services account
 * Install the [CF CLI command line tools](https://docs.run.pivotal.io/cf-cli/install-go-cli.html) on your computer
 
-You can then login to Pivotal Web Services with the command line tool as follows:-
+Finally, you should now be able to login to Pivotal Web Services with the command line tool as follows:-
 
 ````bash
 $ cf login -a https://api.run.pivotal.io
@@ -32,7 +32,7 @@ Org:            myorg
 Space:          development
 ````
 
-If you do, your CF CLI has successfully connected to Pivotal Web Services (api.run.pivotal.io) and you're ready to push applications to Pivotal Web Services.
+This output is telling you that your CF CLI has successfully connected to the Pivotal Web Services endpoint at `https://api.run.pivotal.io` and you're ready to push applications to your `development` space.
 
 ## Running the 'Hello World' application
 
