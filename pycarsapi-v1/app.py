@@ -12,7 +12,7 @@ port = int(os.getenv('PORT', 5000))
 host = str(os.getenv('CF_INSTANCE_IP', '0.0.0.0'))
 mem = str(os.getenv('MEMORY_LIMIT', 'UNKNOWN'))
 inst = str(os.getenv('CF_INSTANCE_INDEX', 'UNKNOWN'))
-db = os.getenv('DATABASE_URL', None)
+db = os.getenv('DATABASE_URL', 'postgres://postgres:password@127.0.0.1:5432/postgres')
 
 connected = False
 cur = None
@@ -34,16 +34,15 @@ def seed():
 @app.route('/', methods = ['GET'])
 def hello_world():
     message = '<html><head/><body><H1>[Python] Cars API Microservice v1</H1>'
-    message += 'This <b>Microservice</b> lists the Vehicle manufacturers in a \'bound\' Postgres database<p/>'
-    message += '<ul><li>Instance index ['+inst+']</li>'
-    message += '<li>Hosted internally on [' + host + ':' + str(port) + ']</li>'
-    message += '<li>[' +mem+ '] memory</li>'
-    message += '<li>Postgresql DB is available: ['+str(connected)+']</li>'
-    message += '<li>Cars REST API Endpoint <a href="./cars">[GET (JSON)]</a>.</li></ul>'
-    message += '<H3>Application Environment Variables</H3><small>'
+    message += 'This <b>Microservice</b> lists the Vehicle manufacturers in a \'bound\' Postgres database<p/><ul>'
+    message += '<li>Instance: <b>['+inst+']</b></li>'
+    message += '<li>Memory: <b>[' +mem+ ']</b></li>'
+    message += '<li>DB Connected: <b>['+str(connected)+']</b></li>'
+    message += '<li>REST API Endpoint: <a href="./cars">[GET (JSON)]</a>.</li>'
+    message += '</ul><H3>Application Environment Variables</H3><small>'
     message += pprint.pformat(str(os.environ))
-    message += '</small><p><blockquote><b>FYI:</b> The environment variables added by PCF services are listed under '
-    message += 'VCAP_XXXX but some are promoted (such as \'MEMORY_LIMIT\' etc.)</blockquote></body></html>'
+    message += '</small><p><blockquote><b>FYI:</b> If available, the ENV variables for PCF services are listed under '
+    message += 'VCAP_XXXX (but some may get promoted).</blockquote></body></html>'
     app.logger.info('Publishing: ' + message)
     return message
 
