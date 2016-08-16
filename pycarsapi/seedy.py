@@ -2,7 +2,7 @@ import psycopg2
 import sys
 import os
 
-db = os.getenv('DATABASE_URL', 'postgres://postgres:password@127.0.0.1:5432/postgres')
+db = os.getenv('DATABASE_URL', 'postgres://postgres:password@192.168.11.1:5432/postgres')
 con = None
 connected = False
 

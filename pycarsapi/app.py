@@ -12,7 +12,7 @@ port = int(os.getenv('PORT', 5000))
 host = str(os.getenv('CF_INSTANCE_IP', '0.0.0.0'))
 mem = str(os.getenv('MEMORY_LIMIT', 'UNKNOWN'))
 inst = str(os.getenv('CF_INSTANCE_INDEX', 'UNKNOWN'))
-db = os.getenv('DATABASE_URL', 'postgres://postgres:password@127.0.0.1:5432/postgres')
+db = os.getenv('DATABASE_URL', 'postgres://postgres:password@192.168.11.1:5432/postgres')
 
 connected = False
 cur = None
@@ -21,10 +21,12 @@ seeded = False
 if db is not None:
     try:
         conn = psycopg2.connect(db)
-        connected = True
         cur = conn.cursor()
+        connected = True
+        print("Connected.")
     except:
         connected = False
+        print("Connection Failed.")
 
 @app.before_first_request
 def seed():
@@ -37,7 +39,7 @@ def hello_world():
     message += 'This <b>Microservice</b> lists the Vehicle manufacturers in a \'bound\' Postgres database<p/><ul>'
     message += '<li>Instance: <b>['+inst+']</b></li>'
     message += '<li>Memory: <b>[' +mem+ ']</b></li>'
-    message += '<li>DB Connected: <b>['+str(connected)+']</b></li>'
+    message += '<li>DB URI: <b>'+db+'</b> Connected: <b>['+str(connected)+']</b></li>'
     message += '<li>REST API Endpoint: <a href="./cars">[GET (JSON)]</a>.</li>'
     message += '</ul><H3>Application Environment Variables</H3><small>'
     message += pprint.pformat(str(os.environ))
@@ -60,4 +62,4 @@ def get_cars():
 
 if __name__ == '__main__':
     app.logger.info('Starting up...')
-    app.run(host=host, port=port, debug=False)
+    app.run(host=host, port=port, debug=True)
