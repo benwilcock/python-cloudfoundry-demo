@@ -78,9 +78,9 @@ buildpack: python 1.5.8
 
 To see your app, paste the url given on the line `urls:` into a browser window. You should see 'Python Hello World!' and a bunch of other stuff.
 
-## Running the 'PyCarsApi-v1' Microservice
+## Running the 'PyCarsApi' Microservice
 
-The folder `pycarsapi-v1` contains a Python microservice application which is backed by a database and which you can also push to Cloud Foundry.
+The folder `pycarsapi` contains a Python microservice application which is backed by a database and which you can also push to Cloud Foundry.
 
 #### This App Can Run On...
 
@@ -96,7 +96,7 @@ The folder `pycarsapi-v1` contains a Python microservice application which is ba
 The first thing you'll need to do is provision your PostgreSQL service on Pivotal Web Services. Because Pivotal web Services already has a PostgreSQL service broker installed (called ElepantSQL), you can add the Postgres database service very easily using the CF CLI you installed earlier.
 
 ````bash
-$ cd pycarsapi-v1
+$ cd pycarsapi
 $ cf create-service elephantsql turtle postgresql
 ````
 
@@ -111,15 +111,15 @@ postgresql   elephantsql   turtle                              create succeeded
 
 The `cf services` command just lists the current services in your Cloud Foundry space so you can visually check that `postgresql` was added to it as requested. Here you can see the __postgresql__ service has been added but no apps have bound to it yet (as expected, it's new!).
 
-This time I've made deploying the app simpler by specifying a deployment manifest for Cloud Foundry. The `cf push` looks for this file and uses it during deployment. If you take a look inside the [manifest.yml](manifest.yml) within the pycarsapi-v1 application you'll see how this file guides the `push` by specifying how the app should be be deployed. In this case it specifies the application a name, assigns it a random route to avoid duplication and specifies which services it needs. For it to work properly, make sure you keep `postgresql` as the database service name as the application is expecting a service with this name to be available in the space when deploying.
+This time I've made deploying the app simpler by specifying a deployment manifest for Cloud Foundry. The `cf push` looks for this file and uses it during deployment. If you take a look inside the [manifest.yml](manifest.yml) within the pycarsapi application you'll see how this file guides the `push` by specifying how the app should be be deployed. In this case it specifies the application a name, assigns it a random route to avoid duplication and specifies which services it needs. For it to work properly, make sure you keep `postgresql` as the database service name as the application is expecting a service with this name to be available in the space when deploying.
 
-Finally, to run the pycarsapi-v1 microservice, simply 'push' it to the Cloud Foundry...
+Finally, to run the pycarsapi microservice, simply 'push' it to the Cloud Foundry...
 
 ````bash
 $ cf push
 ````
 
-Cloud Foundry will upload all the files in the directory to Pivotal Web Services which will then deploy the application using the standard Python buildpack. Once deployed, the application's endpoint address will be given to you (look for something like `urls: pycarsapi-v1-mystery-machine.cfapps.io`). 
+Cloud Foundry will upload all the files in the directory to Pivotal Web Services which will then deploy the application using the standard Python buildpack. Once deployed, the application's endpoint address will be given to you (look for something like `urls: pycarsapi-mystery-machine.cfapps.io`). 
 
 
 If you `curl -X GET http://<your url here>/cars` you should see a response containing a list of vehicle manufacturers similar to the one below...
@@ -128,4 +128,4 @@ If you `curl -X GET http://<your url here>/cars` you should see a response conta
 [[1, "Audi"], [2, "Mercedes"], [3, "Skoda"], [4, "Volvo"], [5, "Bentley"], [6, "Citroen"], [7, "BMW"], [8, "Volkswagen"]]
 ````
 
-This data came from the postgres database on Pivotal Web services. Don't believe me? If you login to the Pivotal Apps Manager online at [http://run.pivotal.io](http://run.pivotal.io) then go to the `pycarsapi-v1` app in your space. Click on 'Services' > 'ElephantSQL' > 'Manage' > 'Browse'. From here within ElephantSQL you can issue SQL statements directly against your databases. Type `SELECT * FROM demo.cars` and click 'Execute'. The table you see returned should contain the same data as that listed above.
+This data came from the postgres database on Pivotal Web services. Don't believe me? If you login to the Pivotal Apps Manager online at [http://run.pivotal.io](http://run.pivotal.io) then go to the `pycarsapi` app in your space. Click on 'Services' > 'ElephantSQL' > 'Manage' > 'Browse'. From here within ElephantSQL you can issue SQL statements directly against your databases. Type `SELECT * FROM demo.cars` and click 'Execute'. The table you see returned should contain the same data as that listed above.

@@ -6,15 +6,24 @@
 
 - The PHP and Java buildpacks automatically add the New Relic agent if the New Relic service has been bound to the application but the Python buildpack does not. There are further modifications required to get Python apps to use New Relic for APM monitoring.
 
+- First install the necessary software additions locally on your computer.
+
     ````bash
     $ pip install newrelic
+    ````
+
+- Next find your licence key on the NewRelic dashboard (in your account profile) and generate a `newrelic.ini` file using the API Key number you've been assigned.
+
+    ````bash
     $ newrelic-admin generate-config <YOUR-LICENSE-KEY-HERE> newrelic.ini
     ````
 
 - Then edit the `newrelic.ini` file created in the last step so that:
 
-    - app_name = PyCarsAPI
-    - log_file = ./logs/newrelic-python-agent.log
+    - Change `app_name = PyCarsAPI`
+    - Uncomment and change `log_file = ./logs/newrelic-python-agent.log`
+
+- Then add `newrelic` to your `requirements.txt` file so that the Python buildpack can use pip to donwnload it when forming your droplet.
 
 - Next alter the `Procfile` so that New Relic 'wraps' the uWGSI application:
 
@@ -42,19 +51,31 @@
 
 > Note that for this Python application, it's not actually necessary to have the New Relic service bound to your app in the Cloud Foundry. Therefore, the app should still run and output APM stats even in PCF DEV. If this were a Java or PHP application the process would be simpler as all that is required is for the New Relic service to be available to the app in Cloud Foundry, but this service is not available in PCF DEV.
 
+
+## Helping hand
+
+- There are sample files for the `newrelic.ini`, `Procfile` and `requirements.txt` in the same folder as this lab.
+
+- A New Relic Python Agent Logfile already exists in the PyCarsAPI application folder, see `/logs/newrelic-python-agent.log`
+
 ## Troubleshooting
 
 If you have issues try the following:-
 
 - Make sure you can login to New Relic using the 'Manage' link in PWS.
 
-- Set the newrelic log level to debug in the newrelic.ini file.
+- Set the log level to debug in the `newrelic.ini` file.
 
-- Validate the configuration in the newrelic.ini by running the validator:-
+- Validate the configuration in the newrelic.ini by running the validator and then looking at the log output:-
 
     ````bash
     $ cf push -c "newrelic-admin validate-config newrelic.ini - stdout"
+    $ cf logs pycarsapi --recent
     ````
+    
+    The validator sends data to new relic under the application name **Python Agent Test**. This can take a few minutes to appear (it's not meant to be completely realtime).
+    
+    > Note: You could also run the application and assuming it starts you could use cf ssh pycarsapi to have a look in the /app/logs/newrelic-python-agent.log.
   
   Remember to `cf push -c null` afterwards to reset your push command settings.
 
