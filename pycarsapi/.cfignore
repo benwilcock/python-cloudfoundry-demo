@@ -1,12 +1,5 @@
 **/*/__pycache__
-tags
-env
-.gitignore
-security-groups
 database.sql
 PWSEnv.txt
-LICENCE.key
 pycarsapi-v1.jmx
-docker-compose.yml
-/labs/*
 
