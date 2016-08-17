@@ -1,10 +1,10 @@
 # Exercise
 
-## Install Postgres Service Broker
+## Install A Postgres Service Broker
 
 ### Requirements
 
-- PCF Dev running locally
+- PCF Dev running locally (`cf dev start`)
 - An app on PCF Dev you want to bind a service to
 - Docker for Mac, Docker for Windows, Docker (Linux)
 - Docker Postgres Image Running Locally (use `docker-compose up -d` to ensure you get the right defaults)
@@ -21,16 +21,17 @@ $ docker-compose up -d
 Login to PCF Dev as admin:
 
 ````bash
-$ cf logout
 $ cf login -a api.local.pcfdev.io -o pcfdev-org -u admin -p admin --skip-ssl-validation
 ````
 
-Push the Postgres CF Service Broker JAR file to PCF Dev:
+Push the Postgres CF Service Broker Application to PCF Dev:
 
 ````bash
 $ cd labs/service-broker
 $ cf push
 ````
+
+> In this case, the service-broker application happens to be written in Java (Spring Boot). As Service brokers are REST apps, you can implement your service-broker in any language supported by Cloud Foundry. There is a handy Java library for simplifying the creation of service-brokers [here](https://github.com/spring-cloud/spring-cloud-cloudfoundry-service-broker).
 
 Create a new service-broker in Cloud Foundry:
 
@@ -89,10 +90,10 @@ $ cf env <app-name>
 }
 ````
 
-Congratulations, you have added a new type of service broker for Postgres Databases and providioned your first service from the marketplace using the new broker.
+Congratulations, you have added a new type of service broker for Postgres Databases and provisioned your first service from the marketplace using the new broker.
 
 ## Helping hand
 
 > The source code and documentation for the service broker we have used is [here](https://github.com/cloudfoundry-community/postgresql-cf-service-broker). You can also obtain ready made Cloud Foundry service brokers from lots of organisations both open-source and commercial. 
 
-> You can of course implement your own service brokers using any language web-services aware language.
+> You can implement your own Cloud Foundry service brokers using any web-services aware language. The details of how the API behaves are in the [Cloud Foundry Service Broker API Docs](https://docs.cloudfoundry.org/services/api.html).
