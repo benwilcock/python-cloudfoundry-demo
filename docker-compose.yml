@@ -7,3 +7,11 @@ services:
      - "5432:5432"
     environment:
      - POSTGRES_PASSWORD=password
+  jenkins:
+    image: jenkins
+    container_name: jenkins
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+    ports:
+      - "8080:8080"
+      - "50000:50000"

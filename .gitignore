@@ -90,6 +90,7 @@ ENV/
 
 **/.DS_Store
 /.idea
+/jenkins_home
 *.log
 *.iml
 *.key

@@ -1,1 +1,0 @@
-web: NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program uwsgi --http :8080 --wsgi-file app.py --callable app --logto ./logs/server.log --enable-threads --single-interpreter
