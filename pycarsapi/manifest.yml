@@ -4,6 +4,6 @@ applications:
       command: null
       instances: 1
       memory: 256M
-      random-route: false
+      random-route: true
       services:
         - postgresql
