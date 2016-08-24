@@ -1,0 +1,1 @@
+web: uwsgi --http :8080 --wsgi-file pycarsapi.py --callable app --logto ./logs/server.log

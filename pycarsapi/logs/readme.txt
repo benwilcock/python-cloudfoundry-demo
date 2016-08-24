@@ -1,0 +1,1 @@
+Placeholder to make sure the logs folder is clean but present after a cf push
