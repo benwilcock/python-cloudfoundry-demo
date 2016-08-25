@@ -90,6 +90,8 @@ ENV/
 
 **/.DS_Store
 /.idea
+/hello-world2
+/hello-world/manifest.yml
 *.log
 *.iml
 *.key
