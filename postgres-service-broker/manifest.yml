@@ -1,0 +1,8 @@
+---
+applications:
+  - name: postgresql-cf-service-broker
+    buildpack: java_buildpack
+    path: postgresql-cf-service-broker-2.4.0-SNAPSHOT.jar
+    env:
+      MASTER_JDBC_URL: "jdbc:postgresql://host.pcfdev.io:5432/postgres?user=postgres&password=password"
+      JAVA_OPTS: "-Dsecurity.user.password=password"
