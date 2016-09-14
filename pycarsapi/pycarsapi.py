@@ -30,14 +30,18 @@ def hello_world():
 ### cars api - GET - retrieve cars
 @app.route('/cars', methods=['GET'])
 def get_cars():
-    query = 'SELECT * FROM demo.cars'
+
     connection = connector.getDatabaseConnection()
+
     if connection is not None:
+        query = 'SELECT * FROM demo.cars'
         cursor = connection.cursor()
         cursor.execute(query)
         connection.commit()
         rows = cursor.fetchall()
         return Response(json.dumps(rows), mimetype='application/json')
+    elif connection is None:
+        return Response("Database connection failed", status=500);
 
 ### Get the application config
 @app.route('/application', methods=['GET'])

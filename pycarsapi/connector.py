@@ -2,6 +2,8 @@ import os
 import json
 import psycopg2
 
+conn = None
+
 ### Extract the database URI value from VCAP_SERVICES
 def getDatabaseUri():
 
@@ -26,6 +28,10 @@ def getDatabaseUri():
 
 def getDatabaseConnection():
     uri = getDatabaseUri()
+    global conn
+
+    if conn is not None:
+        return conn
 
     if uri is not None:
         try:
