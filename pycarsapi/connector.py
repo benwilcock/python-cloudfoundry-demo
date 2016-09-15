@@ -8,11 +8,10 @@ conn = None
 def getDatabaseUri():
 
     # Extract VCAP_SERVICES
-    vcap_services = os.environ.get('VCAP_SERVICES',
-                                   '{"user-provided": [{"credentials": {"uri": "postgres://postgres:password@192.168.11.1:5432/postgres"}, "tags": [], "label": "user-provided", "name": "postgresql"}]}')
+    vcap_services = None
 
     if vcap_services is None:
-        print('The VCAP_SERVICES environment variable does not appear to be set.')
+        print('The VCAP_SERVICES environment variables have not been found.')
         return None
 
     decoded_config = json.loads(vcap_services)

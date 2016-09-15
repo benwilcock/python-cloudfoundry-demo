@@ -1,10 +1,8 @@
 ---
 applications:
     - name: pycarsapi
-      command: null
+      buildpack: python_buildpack
       instances: 1
       memory: 128M
       disk_quota: 256M
       random-route: true
-      services:
-        - postgresql
